@@ -1,0 +1,8 @@
+<section id="unexpected-error" class="prose">
+  <h1>Unexpected error</h1>
+  <p>We're encountered an unexpected error, this isn't your fault! The error has been logged and we'll look into it as soon as we can.</p>
+  <a href="/" class="button bg-primary">Home</a>
+  {{ if .Error }}
+  <section id="error" class="message-error">{{ .Error }}</section>
+  {{ end }}
+</section>

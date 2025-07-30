@@ -5,8 +5,7 @@
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <title>{{ .Title }}</title>
     <link rel="stylesheet" href="/public/styles.css" />
-    <!-- <link rel="icon" href="/public/favicon.ico" sizes="32x32" />
-    <link rel="icon" href="/public/favicon.svg" type="image/svg+xml" /> -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -15,15 +14,9 @@
       rel="stylesheet"
     />
 
-    <!-- <script defer src="/public/htmx.min.js"></script>
-    <script defer src="/public/htmx-response-target.js"></script>
-    <script defer src="/public/alpine.min.js"></script>
-    <script defer src="/public/prism.js"></script> -->
-
   </head>
   <body>
     {{ .Main }}
     {{ .Loading }}
-
   </body>
 </html>

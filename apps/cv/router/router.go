@@ -15,5 +15,4 @@ func Router() http.Handler {
 	loggingMux := logger.LoggingHandler([]string{"/public", "/favicon.ico", "/.well-known/appspecific/com.chrome.devtools.json"})(mux)
 
 	return loggingMux
-	// return mux
 }

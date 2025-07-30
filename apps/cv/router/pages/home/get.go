@@ -2,9 +2,14 @@ package home
 
 import (
 	_ "embed"
+	"html/template"
 	"io"
 	"net/http"
 
+	"github.com/joshsummers4/golang_cv/apps/cv/router/pages/errors/notfound"
+	"github.com/joshsummers4/golang_cv/apps/cv/router/pages/errors/unexpected"
+	"github.com/joshsummers4/golang_cv/apps/cv/router/pages/home/contact"
+	"github.com/joshsummers4/golang_cv/apps/cv/router/pages/home/skills"
 	"github.com/joshsummers4/golang_cv/libs/ui/page"
 	"github.com/joshsummers4/golang_cv/libs/utils/tpl"
 )
@@ -14,18 +19,38 @@ var getHTML string
 var getTPL = tpl.Parse("home page", getHTML)
 
 type getInput struct {
-	Title string
+	Sections []template.HTML
 }
 
 func GetHandler(w http.ResponseWriter, r *http.Request) {
-	content := getTPL.HTML(r.Context(), getInput{})
-
-	input := &page.PageTemplateInput{
-		Title: "Home",
-		Main:  content,
+	if r.URL.Path != "/" {
+		notfound.Handler(w, r)
+		return
+	}
+	data, err := resolve(r)
+	if err != nil {
+		unexpected.Handler(w, r, err)
+		return
 	}
 
-	output := page.Template(input, r)
+	content := getTPL.HTML(r.Context(), data)
 
-	io.WriteString(w, output)
+	pageTemplate := page.Template(&page.PageTemplateInput{
+		Title: "Home",
+		Main:  content,
+	}, r)
+
+	io.WriteString(w, pageTemplate)
+}
+
+func resolve(r *http.Request) (*getInput, error) {
+	//get sections for home page
+	data := &getInput{}
+
+	contacts := contact.ContactHTML(r.Context())
+	data.Sections = append(data.Sections, contacts)
+
+	skill := skills.SkillsHTML(r.Context())
+	data.Sections = append(data.Sections, skill)
+	return data, nil
 }

@@ -1,0 +1,43 @@
+<section class="flex flex-col gap-4 justify-center items-center">
+    <p class="text-3xl">Technical Skills</p>
+    <div class="flex flex-col">
+        <p class="text-medium">Launguages and Frameworks</p>
+        <ul class="list-disc pl-5">
+            {{ range .Languages }}
+            <li>{{ . }}</li>
+            {{ end }}
+        </ul>
+    </div>
+    <div class="flex flex-col">
+        <p class="text-medium">Databases and Data</p>
+        <ul class="list-disc pl-5">
+            {{ range .Databases }}
+            <li>{{ . }}</li>
+            {{ end }}
+        </ul>
+    </div>
+    <div class="flex flex-col">
+        <p class="text-medium">Tools and Platforms</p>
+        <ul class="list-disc pl-5">
+            {{ range .Tools }}
+            <li>{{ . }}</li>
+            {{ end }}
+        </ul>
+    </div>
+    <div class="flex flex-col">
+        <p class="text-medium">CMS and Integrations</p>
+        <ul class="list-disc pl-5">
+            {{ range .Integrations }}
+            <li>{{ . }}</li>
+            {{ end }}
+        </ul>
+    </div>
+    <div class="flex flex-col">
+        <p class="text-medium">Testing and Deployment</p>
+        <ul class="list-disc pl-5">
+            {{ range .Testing }}
+            <li>{{ . }}</li>
+            {{ end }}
+        </ul>
+    </div>
+</section>
