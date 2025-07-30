@@ -1,0 +1,11 @@
+{
+  "functions": {
+    "apps/**/main.go": {
+      "runtime": "vercel-go@latest"
+    }
+  },
+  "routes": [
+    { "src": "/apps/(.*)", "dest": "/api/$1" },
+    { "src": "/(.*)", "dest": "/api/$1" }
+  ]
+}
