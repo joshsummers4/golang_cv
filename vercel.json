@@ -1,7 +1,7 @@
 {
   "functions": {
     "apps/**/main.go": {
-      "runtime": "vercel-go@latest"
+      "runtime": "vercel-go@1.0.0"
     }
   },
   "routes": [
