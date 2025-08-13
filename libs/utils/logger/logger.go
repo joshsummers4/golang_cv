@@ -49,9 +49,9 @@ func (logger *Logger) shouldLog(level LogLevel, tags []string) bool {
 }
 
 func writeToLog(ctx context.Context, level LogLevel, message string, tags []string, err error, fields map[string]interface{}) {
-	// if !l.shouldLog(level, tags) {
-	// 	return
-	// }
+	if !l.shouldLog(level, tags) {
+		return
+	}
 
 	entry := LogEntry{
 		Timestamp:   time.Now().UTC().Format(time.RFC3339Nano),
@@ -68,11 +68,6 @@ func writeToLog(ctx context.Context, level LogLevel, message string, tags []stri
 		if reqID := ctx.Value(RequestIDKey); reqID != nil {
 			if id, ok := reqID.(string); ok {
 				entry.RequestID = id
-			}
-		}
-		if userID := ctx.Value(UserIDKey); userID != nil {
-			if id, ok := userID.(string); ok {
-				entry.UserID = id
 			}
 		}
 	}

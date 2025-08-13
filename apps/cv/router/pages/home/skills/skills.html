@@ -1,43 +1,105 @@
-<section class="flex flex-col gap-4 justify-center items-center">
-    <p class="text-3xl">Technical Skills</p>
-    <div class="flex flex-col">
-        <p class="text-medium">Launguages and Frameworks</p>
-        <ul class="list-disc pl-5">
-            {{ range .Languages }}
-            <li>{{ . }}</li>
-            {{ end }}
+<div class="border-b-2 max-w-prose mx-auto">
+    <span class="text-3xl">Technical Skills</span>
+    <div class="flex flex-row flex-wrap">
+        <div class="p-2">
+            <p class="text-l">Languages & Frameworks</p>
+            <p>Go, TypeScript, JavaScript, Angular, HTML5, CSS3, SASS</p>
+        </div>
+        <div class="p-2">
+            <p class="text-l">Databases & Data</p>
+            <p>SQL, DuckDB, Parquet files, MySQL, Microsoft Access, DynamoDB</p>
+        </div>
+        <div class="p-2">
+            <p class="text-l">Tools & Platforms</p>
+            <p>Git, SourceTree, Bitbucket, AWS, Storyblok, Tailwind CSS</p>
+        </div>
+        <div class="p-2">
+            <p class="text-l">Testing & Deployment</p>
+            <p>Unit testing, Visual testing, Agile/Scrum methodologies</p>
+        </div>
+    </div>
+</div>
+<div class="border-b-2 max-w-prose mx-auto">
+    <span class="text-3xl">Professional Experience</span>
+    
+    <div class="m-2">
+        <div class="flex justify-between m-1 flex-wrap">
+            <div>
+                <div class="font-semibold">Web Developer</div>
+                <div class="font-medium">Alterian</div>
+            </div>
+            <div class="italic">May 2022 - Present</div>
+        </div>
+        <div>
+            <ul class="list-disc">
+                <li class="p-2 leading-1.5">Build full-stack applications in Go for efficient front-to-back-end connectivity, improving application performance and development speed</li>
+                <li class="p-2 leading-1.5">Develop responsive user interfaces using Angular and TypeScript, enhancing application performance and usability across devices</li>
+                <li class="p-2 leading-1.5">Process and analyse large datasets stored in Parquet files using SQL queries via DuckDB and Go, enabling efficient data handling and analytics</li>
+                <li class="p-2 leading-1.5">Implement webhook integrations with Paddle billing system to manage subscription-based platform payments, handling billing events and user subscription lifecycle management</li>
+                <li class="p-2 leading-1.5">Collaborate closely with UX designers to translate wireframe designs into functional code, ensuring optimal user experience</li>
+                <li class="p-2 leading-1.5">Integrate Storyblok headless CMS to support marketing team in developing new corporate website, enabling dynamic content management and improved editorial workflows</li>
+                <li class="p-2 leading-1.5">Utilize Tailwind CSS for responsive design, reducing code volume and improving visual consistency across applications</li>
+                <li class="p-2 leading-1.5">Actively engage in pair programming and individual coding tasks, promoting collaborative development practices while expanding technical skills</li>
+                <li class="p-2 leading-1.5">Manage version control using Git, SourceTree, and Bitbucket with effective branching strategies and code commit practices</li>
+                <li class="p-2 leading-1.5">Work within agile/scrum teams with daily QA communication to ensure high-quality deliverables and faster identification of requirements and bugs</li>
+                <li class="p-2 leading-1.5">Create and execute comprehensive unit and visual tests to validate code and styling changes prior to deployment</li>
+                <li class="p-2 leading-1.5">Contribute to Storybook component library by adding new features and ensuring reusable components, facilitating faster UX design iterations and error detection</li>
+                <li class="p-2 leading-1.5">Deploy and maintain applications using AWS services including App Runner, DynamoDB, Cognito, and AVP configurations</li>
+            </ul>
+        </div>
+    </div>
+    <div class="m-2">
+        <div class="flex justify-between m-1 flex-wrap">
+            <div>
+                <div class="font-semibold">Software Development Apprentice</div>
+                <div class="font-medium">Nectere LTD</div>
+            </div>
+            <div class="italic">December 2020 - October 2021</div>
+        </div>
+        <div>
+            <ul class="list-disc">
+                <li class="p-2 leading-1.5">Designed and optimized partner websites using HTML, CSS, JavaScript, Bootstrap, and jQuery, ensuring seamless user experiences across multiple client projects</li>
+                <li class="p-2 leading-1.5">Developed company's e-commerce platform on Evolution X system and created custom WordPress websites using diverse development techniques</li>
+                <li class="p-2 leading-1.5">Engineered backend workflows and automations using Deluge scripting within ZOHO One system, significantly improving customer service efficiency in ticketing processes</li>
+                <li class="p-2 leading-1.5">Implemented UiPath automations that reduced manual input by over 66% through processes consolidating orders from multiple webstores into user-friendly reports</li>
+                <li class="p-2 leading-1.5">Collaborated within Web and Data team to build and enhance databases using Microsoft Access and SQL, integrating with KPIs and billing dashboards in ZOHO Analytics</li>
+                <li class="p-2 leading-1.5">Completed advanced training in website design and systems development, earning MTA Microsoft HTML5 and City & Guilds Software Development Methodologies certifications</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="border-b-2 max-w-prose mx-auto">
+    <span class="text-3xl">Education & Training</span>
+    
+    <div class="p-3">
+        <div class="font-semibold">University of Birmingham - Applied Golf Management</div>
+        <div>1st Class Honours | Graduated 2016</div>
+        <ul class="list-disc">
+            <li class="p-2 leading-1.5">Relevant Modules: Professional practice in sport, business studies, financial performance analysis</li>
+            <li class="p-2 leading-1.5">Developed critical analytical skills for information scrutiny and research evaluation</li>
+            <li class="p-2 leading-1.5">Dissertation: "Movement Variability in Golf Swing Analysis" - Utilized 3D motion technology and developed Excel macros with VBA for data filtering and analysis</li>
+            <li class="p-2 leading-1.5">Demonstrated ability to draw clear, concise conclusions from complex data sets</li>
         </ul>
     </div>
-    <div class="flex flex-col">
-        <p class="text-medium">Databases and Data</p>
-        <ul class="list-disc pl-5">
-            {{ range .Databases }}
-            <li>{{ . }}</li>
-            {{ end }}
+</div>
+<div class="max-w-prose mx-auto">
+    <span class="text-3xl">Professional Development</span>
+    
+    <div class="p-3">
+        <div class="font-semibold">Codecademy - Web Development Career Path</div>
+        <ul class="list-disc">
+            <li class="p-2 leading-1.5">Comprehensive study of front-end technologies: JavaScript, HTML5, CSS/SASS, PHP, C#</li>
+            <li class="p-2 leading-1.5">Back-end development fundamentals using React.js, Express.js, PHP, and MySQL</li>
         </ul>
     </div>
-    <div class="flex flex-col">
-        <p class="text-medium">Tools and Platforms</p>
-        <ul class="list-disc pl-5">
-            {{ range .Tools }}
-            <li>{{ . }}</li>
-            {{ end }}
+
+    <div class="p-3">
+        <div class="font-semibold">Open University</div>
+        <ul class="list-disc">
+            <li class="p-2 leading-1.5">Simple Coding and Data Analysis with Python</li>
+            <li class="p-2 leading-1.5">Introduction to Software Development</li>
+            <li class="p-2 leading-1.5">Software Development for Enterprise Systems</li>
+            <li class="p-2 leading-1.5">Approaches to Software Development</li>
         </ul>
     </div>
-    <div class="flex flex-col">
-        <p class="text-medium">CMS and Integrations</p>
-        <ul class="list-disc pl-5">
-            {{ range .Integrations }}
-            <li>{{ . }}</li>
-            {{ end }}
-        </ul>
-    </div>
-    <div class="flex flex-col">
-        <p class="text-medium">Testing and Deployment</p>
-        <ul class="list-disc pl-5">
-            {{ range .Testing }}
-            <li>{{ . }}</li>
-            {{ end }}
-        </ul>
-    </div>
-</section>
+</div>

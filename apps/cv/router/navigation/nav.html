@@ -1,0 +1,15 @@
+<div class="flex flex-col gap-2 w-full min-h-full text-white bg-[#2E5266]">
+  <div class="flex flex-row justify-between gap-2 w-full p-2 md:p-8">
+  <!-- have a desktop where nav show and a nested one for mobile-->
+    <a href="/"><span class="material-symbols-outlined text-green-400">developer_mode_tv</span></a>
+    <a href="/contact">Say Hello</a>
+  </div>
+
+  {{.Content}}
+
+  <footer>
+    <div class="flex flex-col">
+      <p>Josh Summers, {{.Year}}</p>
+    </div>
+  </footer>
+</div>

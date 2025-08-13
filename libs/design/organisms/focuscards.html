@@ -1,0 +1,27 @@
+<section x-data="focusCards">
+    <div class="grid grid-cols-3 gap-8 rounded-3xl p-8 shadow">
+        <ul class="flex flex-col *:flex *:flex-col *:gap-4 *:px-8 *:border-l *:border-tertiary">
+            {{ range .Items}}
+                <li class="pb-8" :class="focus === '{{.Title}}' ? '!border-l-4' : ''">
+                    <h3 @click="focus = '{{.Title}}'" class="text-3xl cursor-pointer">{{.Title}}</h3>
+                    <p :class="focus === '{{.Title}}' ? '' : 'hidden'">{{.Description}}</p>
+                </li>
+            {{ end }}
+        </ul>
+        <div class="col-span-2">
+            {{ range .Items}}
+                <template x-if="focus === '{{.Title}}'">{{.Template}}</template>
+            {{ end }}
+        </div>
+    </div>
+</section>
+
+<script>
+  document.addEventListener("alpine:init", () => {
+    var focused = "{{.Focus}}";
+    console.log("hello focus cards", this.focused)
+    Alpine.data("focusCards", () => ({
+        focus: this.focused,
+    }));
+  });
+</script>

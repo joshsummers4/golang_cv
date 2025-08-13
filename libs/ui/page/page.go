@@ -27,6 +27,7 @@ var pageTpl = tpl.ParseWithFuncs("pagetemplate", pageHTML, template.FuncMap{
 type PageTemplateInput struct {
 	AppName    string
 	Title      string
+	Description string
 	Main       template.HTML
 	Loading    template.HTML
 	Icons	  []string

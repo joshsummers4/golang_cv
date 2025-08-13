@@ -1,0 +1,20 @@
+@utility button-base {
+  @apply inline-flex items-center justify-center gap-2;
+  @apply interactive;
+  @apply cursor-pointer overflow-hidden shrink-0;
+  @apply focus:outline-none focus:ring-3 ring-primary ring-offset-2;
+
+  &[aria-selected=true]{
+    @apply bg-container-primary;
+  }
+}
+
+@utility button {
+  @apply button-base;
+  @apply rounded-3xl;
+  @apply min-h-action px-4;
+
+  &:disabled {
+    @apply bg-on-surface-variant;
+  }
+}

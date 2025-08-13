@@ -4,6 +4,9 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <title>{{ .Title }}</title>
+    {{ if .Description}}
+      <meta name="description" content="{{ .Description }}" />
+    {{ end }}
     <link rel="stylesheet" href="/public/styles.css" />
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -13,6 +16,7 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,200..1000;1,200..1000&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Material+Symbols+Outlined&display=swap"
       rel="stylesheet"
     />
+    <script defer src="/public/alpine.min.js"></script>
 
   </head>
   <body>

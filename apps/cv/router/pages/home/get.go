@@ -6,11 +6,11 @@ import (
 	"io"
 	"net/http"
 
+	"github.com/joshsummers4/golang_cv/apps/cv/router/navigation"
 	"github.com/joshsummers4/golang_cv/apps/cv/router/pages/errors/notfound"
 	"github.com/joshsummers4/golang_cv/apps/cv/router/pages/errors/unexpected"
-	"github.com/joshsummers4/golang_cv/apps/cv/router/pages/home/contact"
+	"github.com/joshsummers4/golang_cv/apps/cv/router/pages/home/heading"
 	"github.com/joshsummers4/golang_cv/apps/cv/router/pages/home/skills"
-	"github.com/joshsummers4/golang_cv/libs/ui/page"
 	"github.com/joshsummers4/golang_cv/libs/utils/tpl"
 )
 
@@ -35,22 +35,25 @@ func GetHandler(w http.ResponseWriter, r *http.Request) {
 
 	content := getTPL.HTML(r.Context(), data)
 
-	pageTemplate := page.Template(&page.PageTemplateInput{
-		Title: "Home",
-		Main:  content,
-	}, r)
+	input := navigation.NavInput{
+		Content:     content,
+		Title:       "Josh Summers Golang CV",
+		Description: "Josh Summers Golang CV. Here you can find my skills, experience, contact info, and more.",
+	}
+	navTemplate := navigation.NavLayout(r, input)
 
-	io.WriteString(w, pageTemplate)
+	io.WriteString(w, navTemplate)
 }
 
 func resolve(r *http.Request) (*getInput, error) {
 	//get sections for home page
 	data := &getInput{}
 
-	contacts := contact.ContactHTML(r.Context())
-	data.Sections = append(data.Sections, contacts)
+	header := heading.HeadingHTML(r.Context())
+	// experience := experience.ExperienceHTML(r.Context())
+	skills := skills.SkillsHTML(r.Context())
+	sections := []template.HTML{header, skills}
 
-	skill := skills.SkillsHTML(r.Context())
-	data.Sections = append(data.Sections, skill)
+	data.Sections = sections
 	return data, nil
 }

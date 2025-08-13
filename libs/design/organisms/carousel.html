@@ -1,0 +1,46 @@
+<div x-data="carousel" class="flex flex-col rounded-3xl">
+  <section x-html="items[current]"></section>
+  <footer class="flex gap-4 p-4 items-center">
+    <div class="grow flex items-center">
+      <template x-for="(item, index) in items">
+        <button @click="setCurrent(index)" class="button-icon" :class="{ 'text-warn': index === current, 'opacity-50 hover:opacity-75': index !== current }">
+          <span class="material-symbols-outlined" x-text="index === current ? 'stroke_full' : 'circle'"></span>
+        </button>
+      </template>
+    </div>
+    <button @click="previous()" class="button-icon">
+      <span class="material-symbols-outlined">chevron_left</span>
+    </button>
+    <button @click="next()" class="button-icon">
+      <span class="material-symbols-outlined">chevron_right</span>
+    </button>
+  </footer>
+</div>
+<script>
+  document.addEventListener('alpine:init', () => {
+    Alpine.data('carousel', () => ({
+      items: JSON.parse('{{ .ItemsJson }}'),
+      current: 0,
+      setCurrent(index) {
+        this.current = index;
+      },
+      previous() {
+        if (this.current === 0) {
+          this.setCurrent(this.items.length - 1);
+        } else {
+          this.setCurrent(this.current - 1);
+        }
+      },
+      next() {
+        if (this.current === this.items.length - 1) {
+          this.setCurrent(0);
+        } else {
+          this.setCurrent(this.current + 1);
+        }
+      },
+      init() {
+        this.setCurrent(0);
+      }
+    }))
+  })
+</script>
