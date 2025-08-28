@@ -1,34 +1,11 @@
-<section class="flex flex-col gap-2 justify-center items-center">
-    <p class="text-5xl">Josh Summers B.Sc</p>
-    <p class="text-2xl">Web Developer</p>
-    <div id="contact" class="prose flex flex-col sm:flex-row gap-4">
-        {{ if .Email}}
-        <div class="flex items-center gap-2">
-            <span class="material-symbols-outlined">email</span>
-            <a href="mailto:{{ .Email }}">{{ .Email }}</a>
-        </div>
-        {{ end }}
-        {{ if .Phone }}
-        <div class="flex items-center gap-2">
-            <span class="material-symbols-outlined">phone</span>
-            <span>{{ .Phone }}</span>
-        </div>
-        {{ end }}
-        {{ if .Address }}
-        <div class="flex items-center gap-2">
-            <span class="material-symbols-outlined">location_on</span>
-            <span>{{ .Address }}</span>
-        </div>
-        {{ end }}
+
+<div class="p-2 md:p-4">
+    <span class="text-3xl">Professional Summary</span>
+    
+    <div class="p-2 md:p-4">
+        <ul class="list-disc">
+            <li class="p-2 leading-1.5">Full-stack web developer with 3+ years of experience building scalable, high-performance applications using modern technologies including Go, TypeScript, and Angular. Proven track record delivering enterprise-level solutions in agile environments with expertise spanning front-end development, back-end systems, database management, and AWS cloud deployment.</li>
+            <li class="p-2 leading-1.5">Experienced in bridging technical implementation with business objectives through complex project management and performance analysis. Background in team leadership and client management brings valuable business acumen to development work, ensuring user-focused, high-quality software solutions.</li>
+        </ul>
     </div>
-    <div id="links" class="prose flex flex-col sm:flex-row gap-4">
-        <div>
-            <!-- linkedin favicon -->
-            <span>LinkedIn: <a href="{{.LinkedIn}}">{{.LinkedIn}}</a></span>
-        </div>
-        <div>
-            <!-- github favicon -->
-            <span>Github: <a href="{{.GitHub}}">{{.GitHub}}</a></span>
-        </div>
-    </div>
-</section>
+</div>

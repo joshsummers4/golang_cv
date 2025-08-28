@@ -12,6 +12,7 @@ import (
 	"github.com/joshsummers4/golang_cv/apps/cv/router/pages/home/experience"
 	"github.com/joshsummers4/golang_cv/apps/cv/router/pages/home/heading"
 	"github.com/joshsummers4/golang_cv/apps/cv/router/pages/home/skills"
+	"github.com/joshsummers4/golang_cv/apps/cv/router/pages/home/summary"
 	"github.com/joshsummers4/golang_cv/libs/utils/tpl"
 )
 
@@ -47,14 +48,13 @@ func GetHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func resolve(r *http.Request) (*getInput, error) {
-	//get sections for home page
 	data := &getInput{}
 
 	header := heading.HeadingHTML(r.Context())
+	summary := summary.SummaryHTML(r.Context())
 	skills := skills.SkillsHTML(r.Context())
 	experience := experience.Experience(r.Context())
-	sections := []template.HTML{header, skills, experience}
+	data.Sections = []template.HTML{header, summary, skills, experience}
 
-	data.Sections = sections
 	return data, nil
 }
