@@ -9,6 +9,7 @@ import (
 	"github.com/joshsummers4/golang_cv/apps/cv/router/navigation"
 	"github.com/joshsummers4/golang_cv/apps/cv/router/pages/errors/notfound"
 	"github.com/joshsummers4/golang_cv/apps/cv/router/pages/errors/unexpected"
+	"github.com/joshsummers4/golang_cv/apps/cv/router/pages/home/experience"
 	"github.com/joshsummers4/golang_cv/apps/cv/router/pages/home/heading"
 	"github.com/joshsummers4/golang_cv/apps/cv/router/pages/home/skills"
 	"github.com/joshsummers4/golang_cv/libs/utils/tpl"
@@ -50,9 +51,9 @@ func resolve(r *http.Request) (*getInput, error) {
 	data := &getInput{}
 
 	header := heading.HeadingHTML(r.Context())
-	// experience := experience.ExperienceHTML(r.Context())
 	skills := skills.SkillsHTML(r.Context())
-	sections := []template.HTML{header, skills}
+	experience := experience.Experience(r.Context())
+	sections := []template.HTML{header, skills, experience}
 
 	data.Sections = sections
 	return data, nil

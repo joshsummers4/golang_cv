@@ -4,11 +4,13 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <title>{{ .Title }}</title>
+    <link rel="icon" href="/public/cv/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/public/cv/favicon.svg" type="image/svg+xml" />
     {{ if .Description}}
       <meta name="description" content="{{ .Description }}" />
     {{ end }}
     <link rel="stylesheet" href="/public/styles.css" />
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com"></script>    
 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -16,10 +18,14 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,200..1000;1,200..1000&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Material+Symbols+Outlined&display=swap"
       rel="stylesheet"
     />
+    <script defer src="/public/htmx.min.js"></script>
+    <script defer src="/public/htmx-response-target.js"></script>
     <script defer src="/public/alpine.min.js"></script>
+    <script defer src="/public/prism.js"></script>
+
 
   </head>
-  <body>
+  <body class="flex flex-col gap-2 md:gap-4 w-full min-h-screen mx-auto max-w-[100ch] text-white bg-[#2E5266]">
     {{ .Main }}
     {{ .Loading }}
   </body>

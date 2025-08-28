@@ -1,4 +1,9 @@
-<div class="flex flex-col gap-4 text-left p-2 sm:p-8 md:p-16">
+<div class="flex flex-col gap-4 text-left p-2 md:p-4">
     <p class="text-5xl">{{.Header}}</p>
-    <p class="text-2xl">{{.Strapline}}</p>
+    <p class="text-xl">{{.Strapline}}</p>
+    <div class="flex flex-col sm:flex-row justify-between w-full">
+        <a class="truncate underline text-[#73D4D1]" href="mailto:{{ .Email }}">{{ .Email }}</a>
+        <a class="truncate underline text-[#73D4D1]" href="{{.LinkedIn}}">{{.LinkedIn}}</a>
+        <a class="truncate underline text-[#73D4D1]" href="{{.GitHub}}">{{.GitHub}}</a>
+    </div>
 </div>

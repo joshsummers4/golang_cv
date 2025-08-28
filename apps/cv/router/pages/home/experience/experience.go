@@ -19,6 +19,10 @@ type ExperienceData struct {
 	Languages []template.HTML
 }
 
+func Experience(ctx context.Context) template.HTML {
+	return experienceTPL.HTML(ctx, nil)
+}
+
 func ExperienceHTML(ctx context.Context) template.HTML {
 	var roles []organisms.FocusCard
 
