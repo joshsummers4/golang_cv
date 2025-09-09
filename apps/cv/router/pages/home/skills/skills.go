@@ -5,6 +5,8 @@ import (
 	_ "embed"
 	"html/template"
 
+	"github.com/joshsummers4/golang_cv/libs/design/atoms"
+	"github.com/joshsummers4/golang_cv/libs/features/cv"
 	"github.com/joshsummers4/golang_cv/libs/utils/tpl"
 )
 
@@ -13,20 +15,26 @@ var skillsHTML string
 var skillsTPL = tpl.Parse("skills section", skillsHTML)
 
 type skillsData struct {
-	Languages    []string
-	Databases    []string
-	Tools        []string
-	Integrations []string
-	Testing      []string
+	Languages    []template.HTML
+	Databases    []template.HTML
+	Tools        []template.HTML
+	Testing      []template.HTML
 }
 
 func SkillsHTML(ctx context.Context) template.HTML {
-	data := &skillsData{
-		Languages:    []string{"Go", "JavaScript", "TypeScript", "Angular", "HTML5", "CSS3", "Sass", "PHP", "C#", "Python"},
-		Databases:    []string{"SQL", "DuckDB", "Parquet files", "MySQL", "Microsoft Access", "DynamoDB"},
-		Tools:        []string{"Git", "Github", "Sourcetree", "Bitbucket", "AWS (app runner, cognito, AVP, s3, cloudwatch)", "Storybook", "Tailwind CSS", "Vercel"},
-		Integrations: []string{"Storyblok", "WordPress", "Paddle billing webhooks", "ZOHO One", "UiPath"},
-		Testing:      []string{"Unit Testing", "Visual Testing", "Agile/Scrum methodolgies"},
+	skills := cv.GetSkills(ctx)
+	data := skillsData{}
+	for _, s := range skills {
+		switch s.Type {
+		case "language":
+			data.Languages = append(data.Languages, atoms.PebbleHtml(ctx, s.Skill))
+		case "database":
+			data.Databases = append(data.Databases, atoms.PebbleHtml(ctx, s.Skill))
+		case "tool":
+			data.Tools = append(data.Tools, atoms.PebbleHtml(ctx, s.Skill))
+		case "testing":
+			data.Testing = append(data.Testing, atoms.PebbleHtml(ctx, s.Skill))
+		}
 	}
-	return skillsTPL.HTML(ctx, data)
+	return skillsTPL.HTML(ctx, &data)
 }

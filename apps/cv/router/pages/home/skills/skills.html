@@ -4,19 +4,35 @@
         <div class="flex flex-col">
             <div class="p-2">
                 <p class="text-l">Languages & Frameworks</p>
-                <p>Go, TypeScript, JavaScript, Angular, AlpineJS, HTML5, CSS3, SASS</p>
+                <div class="flex flex-row flex-wrap gap-2">
+                    {{ range .Languages }}
+                        {{ . }}
+                    {{ end }}
+                </div>
             </div>
             <div class="p-2">
                 <p class="text-l">Databases & Data</p>
-                <p>SQL, DuckDB, Parquet files, MySQL, Microsoft Access, DynamoDB</p>
+                <div class="flex flex-row flex-wrap gap-2">
+                    {{ range .Databases }}
+                        {{ . }}
+                    {{ end }}
+                </div>
+            </div>
+            <div class="p-2">
+                <p class="text-l">Libraries & Frameworks</p>
+                <div class="flex flex-row flex-wrap gap-2">
+                    {{ range .Libraries }}
+                        {{ . }}
+                    {{ end }}
+                </div>
             </div>
             <div class="p-2">
                 <p class="text-l">Tools & Platforms</p>
-                <p>Git, SourceTree, Bitbucket, AWS, Storyblok, Tailwind CSS</p>
-            </div>
-            <div class="p-2">
-                <p class="text-l">Testing & Deployment</p>
-                <p>Unit testing, Visual testing, Agile/Scrum methodologies</p>
+                <div class="flex flex-row flex-wrap gap-2">
+                    {{ range .Tools }}
+                        {{ . }}
+                    {{ end }}
+                </div>
             </div>
         </div>
     </div>
