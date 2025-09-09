@@ -5,9 +5,8 @@ import (
 	_ "embed"
 	"html/template"
 
-	"github.com/joshsummers4/golang_cv/libs/design/atoms"
-	"github.com/joshsummers4/golang_cv/libs/features/cv"
 	"github.com/joshsummers4/golang_cv/libs/utils/tpl"
+	"github.com/joshsummers4/golang_cv/libs/design/atoms"
 )
 
 //go:embed skills.html
@@ -22,19 +21,24 @@ type skillsData struct {
 }
 
 func SkillsHTML(ctx context.Context) template.HTML {
-	skills := cv.GetSkills(ctx)
-	data := skillsData{}
-	for _, s := range skills {
-		switch s.Type {
-		case "Language":
-			data.Languages = append(data.Languages, atoms.PebbleHtml(ctx, s.Skill))
-		case "Database":
-			data.Databases = append(data.Databases, atoms.PebbleHtml(ctx, s.Skill))
-		case "Tools":
-			data.Tools = append(data.Tools, atoms.PebbleHtml(ctx, s.Skill))
-		case "Testing":
-			data.Testing = append(data.Testing, atoms.PebbleHtml(ctx, s.Skill))
-		}
+	Languages:=    []string{"Go", "TypeScript", "JavaScript", "Angular", "AlpineJS", "HTML5", "CSS3", "SASS"}
+	Databases:=    []string{"SQL", "DuckDB", "Parquet files", "MySQL", "Microsoft Access", "DynamoDB"}
+	Tools:=        []string{"Git", "Sourcetree", "Bitbucket", "AWS", "Storyblok", "Tailwind CSS"}
+	Testing:=      []string{"Unit Testing", "Visual Testing", "Agile/Scrum methodolgies"}
+
+	data:= skillsData{}
+	for _, lang := range Languages {
+		data.Languages = append(data.Languages, atoms.PebbleHtml(ctx, lang))
 	}
-	return skillsTPL.HTML(ctx, &data)
+	for _, db := range Databases {
+		data.Databases = append(data.Databases, atoms.PebbleHtml(ctx, db))
+	}
+	for _, tool := range Tools {
+		data.Tools = append(data.Tools, atoms.PebbleHtml(ctx, tool))
+	}
+	for _, test := range Testing {
+		data.Testing = append(data.Testing, atoms.PebbleHtml(ctx, test))
+	}
+	
+	return skillsTPL.HTML(ctx, data)
 }
