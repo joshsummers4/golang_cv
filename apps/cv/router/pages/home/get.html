@@ -1,3 +1,16 @@
 {{ range .Sections }}
     <div class="border-b-2">{{.}}</div>
 {{end}}
+
+<div class="fixed top-0 z-10 size-full justify-center flex backdrop-blur-sm max-w-[100ch]" id="contact-overlap">
+  <div class="m-auto max-w-[50ch] m-auto bg-[#39667F] rounded-3xl border-2">
+    <div class="flex flex-row justify-end mx-2 mt-2">
+      <button onclick="document.getElementById('contact-overlap').style.display = 'none'" ><span class="material-symbols-outlined">close</span></button>
+    </div>
+    <div class="flex flex-col gap-4 p-4">
+      <h2 class="text-3xl">I'm Open to Work</h2>
+      <h4 class="text-xl">I'm looking for my next opportunity, reach out to me to see how I can help you</h4>
+      <a class="truncate underline text-[#73D4D1]" href="/contact">Contact me</a>
+    </div>
+  </div>
+</div>
