@@ -38,6 +38,6 @@ func GetSkills(ctx context.Context) []Skill {
 		}
 		skills = append(skills, skill)
 	}
-	logger.Trace(ctx, "skills", []string{"server"}, map[string]any{"skills": len(skills)})
+	logger.Trace(ctx, "get skills", []string{"server"}, map[string]any{"skills": len(skills)})
 	return skills
 }

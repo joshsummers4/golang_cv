@@ -15,10 +15,10 @@ var skillsHTML string
 var skillsTPL = tpl.Parse("skills section", skillsHTML)
 
 type skillsData struct {
-	Languages    []template.HTML
-	Databases    []template.HTML
-	Tools        []template.HTML
-	Testing      []template.HTML
+	Languages []template.HTML
+	Databases []template.HTML
+	Tools     []template.HTML
+	Testing   []template.HTML
 }
 
 func SkillsHTML(ctx context.Context) template.HTML {
@@ -26,13 +26,13 @@ func SkillsHTML(ctx context.Context) template.HTML {
 	data := skillsData{}
 	for _, s := range skills {
 		switch s.Type {
-		case "language":
+		case "Language":
 			data.Languages = append(data.Languages, atoms.PebbleHtml(ctx, s.Skill))
-		case "database":
+		case "Database":
 			data.Databases = append(data.Databases, atoms.PebbleHtml(ctx, s.Skill))
-		case "tool":
+		case "Tools":
 			data.Tools = append(data.Tools, atoms.PebbleHtml(ctx, s.Skill))
-		case "testing":
+		case "Testing":
 			data.Testing = append(data.Testing, atoms.PebbleHtml(ctx, s.Skill))
 		}
 	}
