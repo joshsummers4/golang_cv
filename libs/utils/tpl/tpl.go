@@ -4,8 +4,7 @@ import (
 	"bytes"
 	"context"
 	"html/template"
-
-	"github.com/joshsummers4/golang_cv/libs/utils/logger"
+	"fmt"
 )
 
 type Template struct {
@@ -34,8 +33,7 @@ func String(ctx context.Context, t *Template, body any) (string, error) {
 	err := t.Execute(&output, body)
 
 	if err != nil {
-		// fmt.Println("error parsing template:", err)
-		logger.Error(ctx, "error parsing template", err, []string{"server"}, nil)
+		fmt.Printf("error parsing template: %v\n", err)
 		return "", err
 	}
 
@@ -46,8 +44,7 @@ func HTML(ctx context.Context, tpl *Template, body any) (template.HTML, error) {
 	output, err := String(ctx, tpl, body)
 
 	if err != nil {
-		// fmt.Println("error parsing template:", err)
-		logger.Error(ctx, "error parsing template", err, []string{"server"}, nil)
+		fmt.Printf("error parsing template: %v\n", err)
 		return "", err
 	}
 

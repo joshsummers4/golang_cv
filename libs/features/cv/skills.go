@@ -5,7 +5,6 @@ import (
 	"fmt"
 
 	"github.com/joshsummers4/golang_cv/libs/utils/database"
-	"github.com/joshsummers4/golang_cv/libs/utils/logger"
 )
 
 type Skill struct {
@@ -16,7 +15,7 @@ type Skill struct {
 func GetSkills(ctx context.Context) []Skill {
 	db, err := database.Open(fmt.Sprintf("%s/%s", routePath, skillsTableName))
 	if err != nil {
-		logger.Error(ctx, "error opening skills database", err, []string{"server"}, nil)
+		fmt.Printf("error opening skills database: %v\n", err)
 		return []Skill{}
 	}
 
@@ -24,7 +23,7 @@ func GetSkills(ctx context.Context) []Skill {
 	query := "SELECT skill, type FROM skills"
 	rows, err := db.Query(query)
 	if err != nil {
-		logger.Error(ctx, "error querying skills database", err, []string{"server"}, nil)
+		fmt.Printf("error querying skills database: %v\n", err)
 		return []Skill{}
 	}
 
@@ -33,11 +32,11 @@ func GetSkills(ctx context.Context) []Skill {
 		var skill Skill
 		err := rows.Scan(&skill.Skill, &skill.Type)
 		if err != nil {
-			logger.Error(ctx, "error scanning skills database", err, []string{"server"}, nil)
+			fmt.Printf("error scanning skill row: %v\n", err)
 			return []Skill{}
 		}
 		skills = append(skills, skill)
 	}
-	logger.Trace(ctx, "get skills", []string{"server"}, map[string]any{"skills": len(skills)})
+	fmt.Printf("get skills: %d\n", len(skills))
 	return skills
 }

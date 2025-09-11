@@ -5,8 +5,8 @@ import (
 	"html/template"
 	"encoding/json"
 	"context"
+	"fmt"
 
-	"github.com/joshsummers4/golang_cv/libs/utils/logger"
 	"github.com/joshsummers4/golang_cv/libs/utils/tpl"
 )
 
@@ -23,7 +23,7 @@ func CarouselsHTML(ctx context.Context, items []template.HTML) template.HTML {
 
 	itemsJson, err := json.Marshal(items)
 	if err != nil {
-		logger.Error(ctx, "Carousel: error marshalling cards", err, []string{"organisms", "Carousel"})
+		fmt.Printf("Carousel: error marshalling cards: %v\n", err)
 		return ""
 	}
 
