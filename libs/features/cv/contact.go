@@ -18,20 +18,20 @@ CREATE TABLE IF NOT EXISTS contact (
 );
 `
 
-func init() {
-	// Initialize the contact database and create the table if it doesn't exist
-	db, err := database.Open("./contact.db")
-	if err != nil {
-		logger.Error(context.Background(), "failed to open contact database", err, []string{"server"}, nil)
-		return
-	}
-	defer db.Close()
+// func init() {
+// 	// Initialize the contact database and create the table if it doesn't exist
+// 	db, err := database.Open("./contact.db")
+// 	if err != nil {
+// 		logger.Error(context.Background(), "failed to open contact database", err, []string{"server"}, nil)
+// 		return
+// 	}
+// 	defer db.Close()
 
-	_, err = db.Exec(createContactTableSQL)
-	if err != nil {
-		logger.Error(context.Background(), "failed to create contact table", err, []string{"server"}, nil)
-	}
-}
+// 	_, err = db.Exec(createContactTableSQL)
+// 	if err != nil {
+// 		logger.Error(context.Background(), "failed to create contact table", err, []string{"server"}, nil)
+// 	}
+// }
 
 func AddContact(ctx context.Context, name, email, message string) error {
 	db, err := database.Open("./contact.db")
