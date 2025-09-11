@@ -10,7 +10,7 @@ import (
 	"strings"
 )
 
-//go:embed *.js cv/**.svg cv/**.ico
+//go:embed *.js *.db cv/**.svg cv/**.ico
 var embedded embed.FS
 
 var etags map[string]string

@@ -13,6 +13,10 @@ import (
 var PostHTML string
 var PostTPL = tpl.Parse("contact form response", PostHTML)
 
+//go:embed error.html
+var ErrorHTML string
+var ErrorTPL = tpl.Parse("contact form response error", ErrorHTML)
+
 func PostHandler(w http.ResponseWriter, r *http.Request) {
 	// Handle POST request for contact form submission
 	name := r.FormValue("name")
@@ -24,6 +28,8 @@ func PostHandler(w http.ResponseWriter, r *http.Request) {
 	err := cv.AddContact(r.Context(), name, email, message)
 	if err != nil {
 		http.Error(w, "Failed to process contact form", http.StatusInternalServerError)
+		w.WriteHeader(http.StatusInternalServerError)
+		io.WriteString(w, ErrorTPL.String(r.Context(), nil))
 		return
 	}
 

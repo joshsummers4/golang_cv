@@ -23,7 +23,7 @@ type getData struct {
 }
 
 func GetHandler(w http.ResponseWriter, r *http.Request) {
-	data, err := resolve(r)
+	data, err := resolve()
 	if err != nil {
 		unexpected.Handler(w, r, err)
 		return
@@ -40,7 +40,7 @@ func GetHandler(w http.ResponseWriter, r *http.Request) {
 	io.WriteString(w, template)
 }
 
-func resolve(r *http.Request) (*getData, error) {
+func resolve() (*getData, error) {
 	data := &getData{
 		Email:    "jswebdev4@gmail.com",
 		Address:  "Bristol, UK",
