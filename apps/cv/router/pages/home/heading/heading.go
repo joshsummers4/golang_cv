@@ -24,8 +24,8 @@ type headingInput struct {
 func HeadingHTML(ctx context.Context) template.HTML {
 	data := &headingInput{
 		Header:    "Josh Summers",
-		Strapline: "Web Developer | Full Stack Developer | Frontend Developer",
-		Email:     "scrim.smogs_5x@icloud.com",
+		Strapline: "Web Developer | Frontend Developer | Full Stack Developer",
+		Email:     "jswebdev4@gmail.com",
 		LinkedIn:  "linkedin.com/in/joshua-summers/",
 		GitHub:    "github.com/joshsummers4",
 	}

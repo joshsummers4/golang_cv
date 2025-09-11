@@ -24,13 +24,14 @@
         {{ end }}
     </div>
     <div id="links" class="prose flex flex-col sm:flex-row gap-4">
-        <div>
-            <!-- linkedin favicon -->
-            <span>LinkedIn: <a class="truncate underline text-[#73D4D1]" href="https://www.{{.LinkedIn}}">{{.LinkedIn}}</a></span>
-        </div>
-        <div>
-            <!-- github favicon -->
-            <span>Github: <a class="truncate underline text-[#73D4D1]" href="https://www.{{.GitHub}}">{{.GitHub}}</a></span>
-        </div>
+        <a class="truncate underline text-[#73D4D1]" href="https://www.{{.LinkedIn}}">{{.LinkedIn}}</a>
+        <a class="truncate underline text-[#73D4D1]" href="https://www.{{.GitHub}}">{{.GitHub}}</a>
     </div>
 </section>
+
+<form hx-post="/contact" hx-swap="outerHTML" class="flex flex-col gap-4 p-4 max-w-md mx-auto text-black">
+    <input name="name" class="w-full border p-2 rounded-xl" type="text" required placeholder="Name" />
+    <input name="email" class="w-full border p-2 rounded-xl" type="email" placeholder="Email" />
+    <textarea name="message" class="w-full border p-2 rounded-xl" style="resize: none;" rows="4" placeholder="Leave a message..."></textarea>
+    <button type="submit" class="mt-2 bg-[#73D4D1] text-white py-2 px-4 rounded-xl hover:bg-[#39667F]">Send</button>
+</form>

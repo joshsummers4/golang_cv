@@ -18,6 +18,7 @@ func init() {
 
 	mux.HandleFunc("GET /", home.GetHandler)
 	mux.HandleFunc("GET /contact", contact.GetHandler)
+	mux.HandleFunc("POST /contact", contact.PostHandler)
 }
 
 func Router() http.Handler {

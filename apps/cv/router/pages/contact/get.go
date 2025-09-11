@@ -42,7 +42,7 @@ func GetHandler(w http.ResponseWriter, r *http.Request) {
 
 func resolve(r *http.Request) (*getData, error) {
 	data := &getData{
-		Email:    "scrim.smogs_5x@icloud.com",
+		Email:    "jswebdev4@gmail.com",
 		Address:  "Bristol, UK",
 		LinkedIn: "linkedin.com/in/joshua-summers/",
 		GitHub:   "github.com/joshsummers4",
