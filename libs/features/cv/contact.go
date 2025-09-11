@@ -3,11 +3,11 @@ package cv
 import (
 	"context"
 	"fmt"
-	
+
 	"github.com/joshsummers4/golang_cv/libs/utils/database"
 )
 
- const createContactTableSQL = `
+const createContactTableSQL = `
 CREATE TABLE IF NOT EXISTS contact (
 	id INTEGER PRIMARY KEY AUTOINCREMENT,
 	name TEXT NOT NULL,
@@ -34,7 +34,7 @@ func init() {
 }
 
 func AddContact(ctx context.Context, name, email, message string) error {
-	db, err := database.Open("./contact.db")
+	db, err := database.Open("./public/contact.db")
 	if err != nil {
 		fmt.Printf("contact add contact: failed to open database: %v\n", err)
 		return fmt.Errorf("failed to open database: %w", err)
