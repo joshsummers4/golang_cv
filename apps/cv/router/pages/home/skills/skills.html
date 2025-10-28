@@ -3,25 +3,25 @@
         <span class="text-3xl">Technical Skills</span>
         <div class="flex flex-col">
             <div class="p-2">
-                <p class="text-l">Languages & Frameworks</p>
+                <p class="text-l">Frontend</p>
                 <div class="flex flex-row flex-wrap gap-2">
-                    {{ range .Languages }}
+                    {{ range .Frontend }}
                         {{ . }}
                     {{ end }}
                 </div>
             </div>
             <div class="p-2">
-                <p class="text-l">Databases & Data</p>
+                <p class="text-l">Backend & Databases</p>
                 <div class="flex flex-row flex-wrap gap-2">
-                    {{ range .Databases }}
+                    {{ range .Backend }}
                         {{ . }}
                     {{ end }}
                 </div>
             </div>
             <div class="p-2">
-                <p class="text-l">Tools & Platforms</p>
+                <p class="text-l">DevOps</p>
                 <div class="flex flex-row flex-wrap gap-2">
-                    {{ range .Tools }}
+                    {{ range .DevOps }}
                         {{ . }}
                     {{ end }}
                 </div>
