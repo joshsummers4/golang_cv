@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+
+	"github.com/joshsummers4/golang_cv/config"
 )
 
 type ContactInfo struct {
@@ -16,13 +18,12 @@ type ContactInfo struct {
 
 func GetContactInfo() (*ContactInfo, error) {
 	endpoint := "contactinfo"
-	req, err := http.NewRequest("GET", requestPath+endpoint, nil)
+	req, err := http.NewRequest("GET", config.APIURL+endpoint, nil)
 	if err != nil {
 		return nil, err
 	}
 
-	req.SetBasicAuth(user, pass)
-
+	req.SetBasicAuth(config.APIUSERNAME, config.APIPASSWORD)
 	client := http.Client{}
 	resp, err := client.Do(req)
 	if err != nil {
