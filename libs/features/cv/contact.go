@@ -1,56 +1,50 @@
 package cv
 
 import (
-	"context"
+	"encoding/json"
 	"fmt"
-
-	"github.com/joshsummers4/golang_cv/libs/utils/database"
+	"io"
+	"net/http"
 )
 
-const createContactTableSQL = `
-CREATE TABLE IF NOT EXISTS contact (
-	id INTEGER PRIMARY KEY AUTOINCREMENT,
-	name TEXT NOT NULL,
-	email TEXT,
-	message TEXT NOT NULL,
-	created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-);
-`
-
-func init() {
-	// Initialize the contact database and create the table if it doesn't exist
-	db, err := database.Open("./contact.db")
-	if err != nil {
-		fmt.Printf("Init contact: failed to open database: %v\n", err)
-		return
-	}
-	defer db.Close()
-
-	_, err = db.Exec(createContactTableSQL)
-	if err != nil {
-		fmt.Printf("Init contact: failed to create contact table: %v\n", err)
-		return
-	}
+type ContactInfo struct {
+	Email    string
+	Address  string
+	LinkedIn string
+	GitHub   string
 }
 
-func AddContact(ctx context.Context, name, email, message string) error {
-	db, err := database.Open("./public/contact.db")
+func GetContactInfo() (*ContactInfo, error) {
+	endpoint := "contactinfo"
+	req, err := http.NewRequest("GET", requestPath+endpoint, nil)
 	if err != nil {
-		fmt.Printf("contact add contact: failed to open database: %v\n", err)
-		return fmt.Errorf("failed to open database: %w", err)
-	}
-	defer db.Close()
-
-	_, err = db.ExecContext(ctx, `
-		INSERT INTO contact (name, email, message)
-		VALUES ($1, $2, $3)
-	`, name, email, message)
-
-	if err != nil {
-		fmt.Printf("contact add contact: failed to add contact: %v\n", err)
-		return fmt.Errorf("failed to add contact: %w", err)
+		return nil, err
 	}
 
-	fmt.Printf("contact add contact: contact form submitted: %v\n", map[string]any{"name": name, "email": email})
-	return nil
+	req.SetBasicAuth(user, pass)
+
+	client := http.Client{}
+	resp, err := client.Do(req)
+	if err != nil {
+		return nil, err
+	}
+
+	defer resp.Body.Close()
+
+	if resp.StatusCode != http.StatusOK {
+		return nil, fmt.Errorf("unexpected response status: %d", resp.StatusCode)
+	}
+
+	body, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return nil, err
+	}
+
+	var contact ContactInfo
+	err = json.Unmarshal(body, &contact)
+	if err != nil {
+		return nil, err
+	}
+	fmt.Println("contact", contact)
+	return &contact, nil
 }

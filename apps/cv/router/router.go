@@ -12,13 +12,12 @@ var mux *http.ServeMux
 
 func init() {
 	mux = http.NewServeMux()
-	
+
 	mux.Handle("GET /favicon.ico", public.FileServer)
 	mux.Handle("GET /public/", http.StripPrefix("/public", public.FileServer))
 
 	mux.HandleFunc("GET /", home.GetHandler)
 	mux.HandleFunc("GET /contact", contact.GetHandler)
-	mux.HandleFunc("POST /contact", contact.PostHandler)
 }
 
 func Router() http.Handler {

@@ -6,6 +6,7 @@ import (
 	_ "embed"
 	"html/template"
 
+	"github.com/joshsummers4/golang_cv/libs/features/cv"
 	"github.com/joshsummers4/golang_cv/libs/utils/tpl"
 )
 
@@ -21,13 +22,13 @@ type headingInput struct {
 	GitHub    string
 }
 
-func HeadingHTML(ctx context.Context) template.HTML {
+func HeadingHTML(ctx context.Context, contactinfo *cv.ContactInfo) template.HTML {
 	data := &headingInput{
 		Header:    "Josh Summers",
 		Strapline: "Web Developer | Frontend Developer | Full Stack Developer",
-		Email:     "jswebdev4@gmail.com",
-		LinkedIn:  "linkedin.com/in/joshua-summers/",
-		GitHub:    "github.com/joshsummers4",
+		Email:     contactinfo.Email,
+		LinkedIn:  contactinfo.LinkedIn,
+		GitHub:    contactinfo.GitHub,
 	}
 	return headingTPL.HTML(ctx, data)
 }

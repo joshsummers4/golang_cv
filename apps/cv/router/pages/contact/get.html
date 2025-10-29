@@ -10,12 +10,6 @@
             <a class="truncate underline text-[#73D4D1]" href="mailto:{{ .Email }}">{{ .Email }}</a>
         </div>
         {{ end }}
-        {{ if .Phone }}
-        <div class="flex items-center gap-2">
-            <span class="material-symbols-outlined">phone</span>
-            <span>{{ .Phone }}</span>
-        </div>
-        {{ end }}
         {{ if .Address }}
         <div class="flex items-center gap-2">
             <span class="material-symbols-outlined">location_on</span>
@@ -28,10 +22,3 @@
         <a class="truncate underline text-[#73D4D1]" href="https://www.{{.GitHub}}">{{.GitHub}}</a>
     </div>
 </section>
-
-<!-- <form hx-post="/contact" hx-swap="outerHTML" class="flex flex-col gap-4 p-4 max-w-md mx-auto text-black">
-    <input name="name" class="w-full border p-2 rounded-xl" type="text" required placeholder="Name" />
-    <input name="email" class="w-full border p-2 rounded-xl" type="email" placeholder="Email" />
-    <textarea name="message" class="w-full border p-2 rounded-xl" style="resize: none;" rows="4" placeholder="Leave a message..."></textarea>
-    <button type="submit" class="mt-2 bg-[#73D4D1] text-white py-2 px-4 rounded-xl hover:bg-[#39667F]">Send</button>
-</form> -->

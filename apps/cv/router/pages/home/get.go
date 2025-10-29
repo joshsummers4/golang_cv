@@ -13,6 +13,7 @@ import (
 	"github.com/joshsummers4/golang_cv/apps/cv/router/pages/home/heading"
 	"github.com/joshsummers4/golang_cv/apps/cv/router/pages/home/skills"
 	"github.com/joshsummers4/golang_cv/apps/cv/router/pages/home/summary"
+	"github.com/joshsummers4/golang_cv/libs/features/cv"
 	"github.com/joshsummers4/golang_cv/libs/utils/tpl"
 )
 
@@ -50,7 +51,12 @@ func GetHandler(w http.ResponseWriter, r *http.Request) {
 func resolve(r *http.Request) (*getInput, error) {
 	data := &getInput{}
 
-	header := heading.HeadingHTML(r.Context())
+	contactinfo, err := cv.GetContactInfo()
+	if err != nil {
+		return nil, err
+	}
+
+	header := heading.HeadingHTML(r.Context(), contactinfo)
 	summary := summary.SummaryHTML(r.Context())
 	skills := skills.SkillsHTML(r.Context())
 	experience := experience.Experience(r.Context())
