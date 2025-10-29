@@ -14,13 +14,7 @@ var (
 )
 
 func GetEnvironmentVariables() {
-	if os.Getenv("VERCEL_ENV") == "production" {
-		// Load environment variables from Vercel
-		err := godotenv.Load()
-		if err != nil {
-			log.Fatal("Error loading environment variables from Vercel:", err)
-		}
-	} else {
+	if os.Getenv("VERCEL_ENV") == "" {
 		// Load environment variables from local .env file
 		err := godotenv.Load(".env")
 		if err != nil {
