@@ -2,8 +2,14 @@
     <p class="text-5xl">{{.Header}}</p>
     <p class="text-xl">{{.Strapline}}</p>
     <div class="flex flex-col sm:flex-row justify-between w-full">
+        {{ if .Email}}
         <a class="truncate underline text-[#73D4D1]" href="mailto:{{ .Email }}">{{ .Email }}</a>
+        {{ end }}
+        {{ if .LinkedIn }}
         <a class="truncate underline text-[#73D4D1]" href="https://www.{{.LinkedIn}}">{{.LinkedIn}}</a>
+        {{ end }}
+        {{ if .GitHub }}
         <a class="truncate underline text-[#73D4D1]" href="https://www.{{.GitHub}}">{{.GitHub}}</a>
+        {{ end }}
     </div>
 </div>

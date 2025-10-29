@@ -4,6 +4,7 @@ import (
 	_ "embed"
 	"html/template"
 	"io"
+	"log"
 	"net/http"
 
 	"github.com/joshsummers4/golang_cv/apps/cv/router/navigation"
@@ -53,7 +54,7 @@ func resolve(r *http.Request) (*getInput, error) {
 
 	contactinfo, err := cv.GetContactInfo()
 	if err != nil {
-		return nil, err
+		log.Println(err)
 	}
 
 	header := heading.HeadingHTML(r.Context(), contactinfo)

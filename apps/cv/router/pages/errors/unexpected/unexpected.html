@@ -1,8 +1,8 @@
 <section id="unexpected-error" class="prose">
   <h1>Unexpected error</h1>
   <p>We're encountered an unexpected error, this isn't your fault! The error has been logged and we'll look into it as soon as we can.</p>
-  <a href="/" class="button bg-primary">Home</a>
+  <a href="/" class="bg-[#73D4D1] text-white py-2 px-4 rounded-xl hover:bg-[#39667F]">Home</a>
   {{ if .Error }}
-  <section id="error" class="message-error">{{ .Error }}</section>
+  <section id="error" class="message-error italic">{{ .Error }}</section>
   {{ end }}
 </section>
