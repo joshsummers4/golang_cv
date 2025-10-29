@@ -26,6 +26,8 @@ func GetEnvironmentVariables() {
 	APIPASSWORD = os.Getenv("API_PASSWORD")
 	APIURL = os.Getenv("API_URL")
 
+	log.Println("config set up", APIURL, APIUSERNAME)
+
 	if APIUSERNAME == "" || APIPASSWORD == "" || APIURL == "" {
 		log.Fatal("Missing API credentials")
 	}
