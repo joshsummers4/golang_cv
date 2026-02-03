@@ -6,6 +6,7 @@ import (
 	"html/template"
 
 	"github.com/joshsummers4/golang_cv/libs/design/atoms"
+	"github.com/joshsummers4/golang_cv/libs/features/cv"
 	"github.com/joshsummers4/golang_cv/libs/utils/tpl"
 )
 
@@ -21,22 +22,19 @@ type skillsData struct {
 }
 
 func SkillsHTML(ctx context.Context) template.HTML {
-	Frontend := []string{"Angular", "TypeScript", "JavaScript", "HTML5", "CSS3", "SASS", "React", "Tailwind CSS", "Storyblok"}
-	Backend := []string{"Go", "SQL", "DuckDB", "Parquet files", "MySQL", "DynamoDB", "REST API"}
-	DevOps := []string{"Git", "Sourcetree", "Bitbucket", "AWS", "Docker"}
-	Testing := []string{"Unit Testing", "Visual Testing", "Agile/Scrum methodolgies"}
+	skills, _ := cv.GetSkills("")
 
 	data := skillsData{}
-	for _, lang := range Frontend {
+	for _, lang := range skills.Frontend {
 		data.Frontend = append(data.Frontend, atoms.PebbleHtml(ctx, lang))
 	}
-	for _, db := range Backend {
+	for _, db := range skills.Backend {
 		data.Backend = append(data.Backend, atoms.PebbleHtml(ctx, db))
 	}
-	for _, tool := range DevOps {
+	for _, tool := range skills.DevOps {
 		data.DevOps = append(data.DevOps, atoms.PebbleHtml(ctx, tool))
 	}
-	for _, test := range Testing {
+	for _, test := range skills.Testing {
 		data.Testing = append(data.Testing, atoms.PebbleHtml(ctx, test))
 	}
 

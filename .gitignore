@@ -2,3 +2,4 @@ bin/
 .env
 .air.toml
 tmp/
+libs/functions

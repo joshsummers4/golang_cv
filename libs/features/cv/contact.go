@@ -46,6 +46,6 @@ func GetContactInfo() (*ContactInfo, error) {
 	if err != nil {
 		return &contact, err
 	}
-	fmt.Println("contact", contact)
+
 	return &contact, nil
 }
